@@ -1,4 +1,4 @@
-const API_URL = '/api';
+const API_URL = '/_api';
 export async function fetchWeatherData(lat, lon) {
   try {
     let [weatherPromise, forcastPromise] = await Promise.all([

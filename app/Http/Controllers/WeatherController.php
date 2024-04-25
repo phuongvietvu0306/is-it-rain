@@ -21,8 +21,11 @@ class WeatherController extends Controller
             'label'     => __('Current location'),
         ];
 
-        // Get lat and lon from IP address
-        $ip = $request->ip();
+        // Get user IP address
+        $ip = $request->getClientIp();
+
+        // Get user IP address for vercel
+        $ip = $request->header('x-forwarded-for');
 
         $response = Http::get("http://ip-api.com/json/{$ip}");
         if ($response->successful()) {
